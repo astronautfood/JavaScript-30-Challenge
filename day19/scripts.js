@@ -81,7 +81,6 @@ function greenScreen(pixels) {
             && red <= levels.rmax
             && green <= levels.gmax
             && blue <= levels.bmax) {
-                
             pixels.data[i + 3] = 0;
         }
     }
