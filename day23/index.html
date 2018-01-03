@@ -27,6 +27,9 @@
         <textarea name="text">Hello! I love JavaScript 👍</textarea>
         <button id="stop">Stop!</button>
         <button id="speak">Speak</button>
+        <button id="pause">Pause</button>
+        <button id="resume">Resume</button>
+        <button id="clear">Clear</button>
 
     </div>
 
@@ -38,8 +41,14 @@
         const options = document.querySelectorAll('[type="range"], [name="text"]');
         const speakButton = document.querySelector('#speak');
         const stopButton = document.querySelector('#stop');
+        const pauseButton = document.querySelector('#pause');
+        const resumeButton = document.querySelector('#resume')
+        const clearButton = document.querySelector('#clear')
+
+        console.log(options);
 
         msg.text = document.querySelector('[name="text"]').value;
+        console.log(msg.text);
 
         function populateVoices() {
             voices = this.getVoices();
@@ -64,12 +73,17 @@
             msg[this.name] = this.value;
             toggle();
         }
+            
 
         speechSynthesis.addEventListener('voiceschanged', populateVoices);
         voicesDropdown.addEventListener('change', setVoice);
         options.forEach(option => option.addEventListener('change', setOption));
         speakButton.addEventListener('click', toggle);
-        stopButton.addEventListener('click', () => toggle(false))
+        stopButton.addEventListener('click', () => toggle(false));
+        pauseButton.addEventListener('click', () => speechSynthesis.pause());
+        resumeButton.addEventListener('click', () => speechSynthesis.resume());
+        // clearButton.addEventListener('click', () => document.querySelector('[name="text"]').textContent = '');
+        clearButton.addEventListener('click', () => options[2].textContent = '' );
 
     </script>
 

@@ -91,6 +91,10 @@ input[type="select"] {
   top:2px;
 }
 
-.voiceinator button:nth-of-type(1) {
+.voiceinator button:nth-of-type(odd) {
   margin-right: 2%;
+}
+
+.voiceinator button:last-child {
+  width: 100%;
 }
